@@ -16,11 +16,19 @@ outputs:
     description: "Greeting to someone"
     value: ${{ steps.hello.outputs.greeting-world }}
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  env:
-    WHO_TO_GREET: ${{ inputs.who-to-greet }}
-    WHO_TO_GREET2: ${{ inputs.who-to-greet2 }}
-  args:
-    - ${{ inputs.who-to-greet }}
-    - ${{ inputs.who-to-greet2 }}
+  using: "composite"
+  steps:
+    # 渡されたinput
+    - run: echo "渡されたinput ${{ inputs.who-to-greet }}"
+      shell: bash
+      # outputsの変数を変更
+    - id: random-number-generator
+      run: echo "greeting-world=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      shell: bash
+    # 現在のディレクトリパスを取得して同ディレクトリ内のファイルを実行できるようにする
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+
+    # bashでgoodbye.shを実行
+    - run: goodbye.sh
+      shell: bash
