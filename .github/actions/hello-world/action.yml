@@ -15,3 +15,12 @@ outputs:
   greeting-world:
     description: "Greeting to someone"
     value: ${{ steps.hello.outputs.greeting-world }}
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    WHO_TO_GREET: ${{ inputs.who-to-greet }}
+    WHO_TO_GREET2: ${{ inputs.who-to-greet2 }}
+  args:
+    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.who-to-greet2 }}
