@@ -12,3 +12,4 @@ jobs:
         with:
           who-to-greet: "mozumasu"
       - run: echo "The greeting was ${{ steps.hello.outputs.greeting-world}}"
+        shell: bash
