@@ -23,7 +23,7 @@ runs:
       shell: bash
       # outputsの変数を変更
     - id: set-output
-      run: echo "greeting-world=$(echo "Hello ${{input.who-to-greet}}") >> $GITHUB_OUTPUT
+      run: echo "greeting-world=$(echo "Hello ${{inputs.who-to-greet}}") >> $GITHUB_OUTPUT
       shell: bash
     # 現在のディレクトリパスを取得して同ディレクトリ内のファイルを実行できるようにする
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
