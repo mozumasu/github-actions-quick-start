@@ -14,7 +14,7 @@ inputs:
 outputs:
   greeting-world:
     description: "Greeting to someone"
-    value: ${{ steps.hello.outputs.greeting-world }}
+    value: ${{ steps.set-output.outputs.greeting-world }}
 runs:
   using: "composite"
   steps:
@@ -22,7 +22,7 @@ runs:
     - run: echo "渡されたinput ${{ inputs.who-to-greet }}"
       shell: bash
       # outputsの変数を変更
-    - id: random-number-generator
+    - id: set-output
       run: echo "greeting-world=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
     # 現在のディレクトリパスを取得して同ディレクトリ内のファイルを実行できるようにする
