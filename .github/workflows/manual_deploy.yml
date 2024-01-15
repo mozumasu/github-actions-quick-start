@@ -21,7 +21,7 @@ jobs:
     steps:
       # デプロイ権限のチェック
       - name: check deploy permission
-        if: github.actor_id != 8888888
+        if: github.actor_id != 93071448
         run: |
           echo "not have permission to deploy"
           exit 1
