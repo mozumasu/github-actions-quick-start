@@ -29,7 +29,10 @@ jobs:
       # デプロイ先がdevelopの場合のみ実行
       - name: deploy to develop
         if: ${{ github.event.inputs.target.options }} == 'develop'
-        run: echo "deploy to develop"
+        run: |
+          echo "deploy to develop"
+          echo ${{ github.event.inputs.target }}
+          echo ${{ github.event.inputs.target.options }}
 
         # デプロイ先がnightlyの場合のみ実行
       - name: deploy to nightly
