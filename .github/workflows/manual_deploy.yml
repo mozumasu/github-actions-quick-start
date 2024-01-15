@@ -19,16 +19,19 @@ jobs:
   manual-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: develop
-        if: github.event.inputs.target == 'develop'
+      # デプロイ権限のチェック
+      - name: check deploy permission
+        if: github.actor_id != 8888888
         run: |
-          echo develop
-          echo develop true
+          echo "not have permission to deploy"
+          exit 1
 
-      - name: develop
-        if: github.event.inputs.target != 'develop'
-        run: |
-          echo false
+      # デプロイ先がdevelopの場合のみ実行
+      - name: deploy to develop
+        if: ${{ github.event.inputs.target }} == 'develop'
+        run: echo "deploy to develop"
 
-    #   - run: echo ${{ github.event.inputs.target }}
-    #   - run: echo ${{ github.event.inputs.message }}
+        # デプロイ先がnightlyの場合のみ実行
+      - name: deploy to nightly
+        if: ${{ github.event.inputs.target }} == 'nightly'
+        run: echo "deploy to nightly"
