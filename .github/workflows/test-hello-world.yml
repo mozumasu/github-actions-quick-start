@@ -1,7 +1,7 @@
 on: push
 
 name: Hello world
-run-name: ${{github.ref}} Hello world
+run-name: 【${{github.ref}}】 Hello world
 jobs:
   call_helllo_world:
     runs-on: ubuntu-latest
