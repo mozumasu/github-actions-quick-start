@@ -1,0 +1,22 @@
+name: Manual Deploy
+run-name: "${{ github.event.inputs.target }}: ${{github.event.inputs.message}}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        type: choice
+        description: デプロイ先
+        options:
+          - develop
+          - nightly
+      message:
+        description: デプロイ理由
+        required: true
+        default: "例: 機能追加のため"
+
+jobs:
+  manual-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.target }}

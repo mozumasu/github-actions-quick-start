@@ -1,12 +1,15 @@
 on: push
 
 name: Hello world
-run-name: ${{github.base_ref}}Hello world
+run-name: 【${{github.ref}}】 Hello world
 jobs:
   call_helllo_world:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/hello-world
+      - uses: actions/checkout@v4
+      - id: hello
+        uses: ./.github/actions/hello-world
         with:
           who-to-greet: "mozumasu"
+      - run: echo "The greeting was ${{ steps.hello.outputs.greeting-world}}"
+        shell: bash

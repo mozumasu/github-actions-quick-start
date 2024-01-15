@@ -1,0 +1,34 @@
+name: hello world
+author: mozumasu
+description: "echo Hello world"
+inputs:
+  who-to-greet:
+    description: "Who to greet 一人目(必須)"
+    required: true
+    default: "World"
+
+  who-to-greet2:
+    description: "二人目(任意)"
+    required: false
+
+outputs:
+  greeting-world:
+    description: "Greeting to someone"
+    value: ${{ steps.set-output.outputs.greeting-message }} # steps.{id}.outputs.{steps内で$GITHUB_OUTPUTに入れた値}
+runs:
+  using: "composite"
+  steps:
+    # 渡されたinput
+    - run: echo "渡されたinput ${{ inputs.who-to-greet }}"
+      shell: bash
+      # outputsの変数を変更
+    - id: set-output
+      run: echo "greeting-message=$(echo "Hello ${{inputs.who-to-greet}}")" >> $GITHUB_OUTPUT # $GITHUB_OUTPUT = outputs
+      shell: bash
+    # 現在のディレクトリパスを取得して同ディレクトリ内のファイルを実行できるようにする
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+
+    # # bashでgoodbye.shを実行
+    # - run: goodbye.sh
+    #   shell: bash
