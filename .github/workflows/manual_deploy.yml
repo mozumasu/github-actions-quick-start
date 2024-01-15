@@ -1,5 +1,5 @@
 name: Manual Deploy
-run-name: "${{ github.event.inputs.target }}: ${{github.event.inputs.message}} ${{github.sha}}"
+run-name: "${{ github.event.inputs.target }}: ${{github.event.inputs.message}}"
 
 on:
   workflow_dispatch:
@@ -19,5 +19,16 @@ jobs:
   manual-deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event.inputs.target }}
-      - run: echo ${{ github.event.inputs.message }}
+      - name: develop
+        if: github.event.inputs.target == 'develop'
+        run: |
+          echo develop
+          echo develop true
+
+      - name: develop
+        if: github.event.inputs.target != 'develop'
+        run: |
+          echo false
+
+    #   - run: echo ${{ github.event.inputs.target }}
+    #   - run: echo ${{ github.event.inputs.message }}
