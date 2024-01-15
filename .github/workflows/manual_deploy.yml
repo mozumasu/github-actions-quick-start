@@ -1,5 +1,5 @@
 name: Manual Deploy
-run-name: "${{ github.event.inputs.target }}: ${{github.event.inputs.message}}"
+run-name: "${{ github.event.inputs.target }}: ${{github.event.inputs.message}} ${{github.sha}}"
 
 on:
   workflow_dispatch:
