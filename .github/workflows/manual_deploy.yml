@@ -28,14 +28,14 @@ jobs:
 
       # デプロイ先がdevelopの場合のみ実行
       - name: deploy to develop
-        if: ${{ github.event.inputs.target }} == 'develop'
+        if: github.event.inputs.target == 'develop'
         run: |
           echo "deploy to develop"
           echo ${{ github.event.inputs.target }}
 
         # デプロイ先がnightlyの場合のみ実行
       - name: deploy to nightly
-        if: ${{ github.event.inputs.target }} == 'nightly'
+        if: github.event.inputs.target == 'nightly'
         run: |
           echo "deploy to nightly"
           echo ${{ github.event.inputs.target }}
