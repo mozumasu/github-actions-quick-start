@@ -18,10 +18,11 @@ on:
 jobs:
   manual-deploy:
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.target }}
     steps:
       # デプロイ権限のチェック
       - name: check deploy permission
-        if: github.actor_id != 8888888
+        if: github.actor_id != 93071448
         run: |
           echo "not have permission to deploy"
           exit 1
@@ -33,9 +34,21 @@ jobs:
           echo "deploy to develop"
           echo ${{ github.event.inputs.target }}
 
-        # デプロイ先がnightlyの場合のみ実行
+      # デプロイ先がnightlyの場合のみ実行
       - name: deploy to nightly
         if: github.event.inputs.target == 'nightly'
         run: |
           echo "deploy to nightly"
           echo ${{ github.event.inputs.target }}
+
+      # # デプロイが完了したらタグ付け
+      #   - name: tag
+      #     if: github.event.inputs.target == 'nightly'
+      #     run: |
+      #     echo "tag"
+      #     echo ${{ github.event.inputs.target }}
+
+      - name: echo env
+        run: |
+          echo DB_HOST =${{ secrets.DB_HOST }} >> .env
+          echo DB_HOST =${{ secrets.DB_HOST }} >> .env
