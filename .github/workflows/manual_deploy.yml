@@ -52,4 +52,6 @@ jobs:
         run: |
           echo DB_HOST =${{ secrets.DB_HOST }} >> .env
           echo DB_HOST =${{ secrets.DB_HOST }} >> .env
-          echo cat .env
+          touch test.txt
+          echo .env >> test.txt
+          cat test.txt
