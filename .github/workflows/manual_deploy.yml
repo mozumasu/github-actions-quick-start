@@ -8,8 +8,7 @@ on:
         type: choice
         description: デプロイ先
         options:
-          - develop
-          - nightly
+          - environment
       message:
         description: デプロイ理由
         required: true
@@ -52,6 +51,3 @@ jobs:
         run: |
           echo DB_HOST =${{ secrets.DB_HOST }} >> .env
           echo DB_HOST =${{ secrets.DB_HOST }} >> .env
-          touch test.txt
-          echo .env >> test.txt
-          cat test.txt
