@@ -5,10 +5,8 @@ on:
   workflow_dispatch:
     inputs:
       target:
-        type: choice
+        type: environment
         description: デプロイ先
-        options:
-          - environment
       message:
         description: デプロイ理由
         required: true
