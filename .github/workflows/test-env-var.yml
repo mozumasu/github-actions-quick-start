@@ -1,0 +1,33 @@
+name: 【Test】ワークフロー内の環境変数のテスト
+run-name: 【Test】ワークフロー内の環境変数のテスト
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "テスト"
+        required: true
+        default: "テスト"
+
+env:
+  WORKFLOW_ENV: WORKFLOW_ENV
+
+jobs:
+  check-env:
+    runs-on: ubuntu-latest
+    env:
+      ENV_JOBS: ENV_JOBS
+    steps:
+      - name: ワークフロー内の環境変数のテスト
+        run: |
+          echo env.WORKFLOW_ENV: ${{ env.WORKFLOW_ENV }}
+
+      - name: JOB内の環境変数のテスト
+        run: |
+          echo env.ENV_JOBS: ${{ env.ENV_JOBS }}
+
+      - name: アクション内の環境変数のテスト
+        env:
+          ENV_ACTIONS: ENV_ACTIONS
+        run: |
+          echo env.ENV_ACTIONS: ${{ env.ENV_ACTIONS }}
