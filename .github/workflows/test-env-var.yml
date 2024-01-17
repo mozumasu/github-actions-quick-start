@@ -31,3 +31,20 @@ jobs:
           ENV_ACTIONS: アクション内の環境変数だよ
         run: |
           echo env.ENV_ACTIONS: ${{ env.ENV_ACTIONS }}
+
+  check-workflow-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ワークフロー内の環境変数のテスト
+        run: |
+          echo env.WORKFLOW_ENV: ${{ env.WORKFLOW_ENV }}
+
+      - name: JOB内の環境変数のテスト
+        run: |
+          echo env.ENV_JOBS: ${{ env.ENV_JOBS }}
+
+      - name: アクション内の環境変数のテスト
+        env:
+          ENV_ACTIONS: アクション内の環境変数だよ
+        run: |
+          echo env.ENV_ACTIONS: ${{ env.ENV_ACTIONS }}
