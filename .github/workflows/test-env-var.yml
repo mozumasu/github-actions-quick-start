@@ -44,7 +44,5 @@ jobs:
           echo env.ENV_JOBS: ${{ env.ENV_JOBS }}
 
       - name: アクション内の環境変数のテスト
-        env:
-          ENV_ACTIONS: アクション内の環境変数だよ
         run: |
           echo env.ENV_ACTIONS: ${{ env.ENV_ACTIONS }}
