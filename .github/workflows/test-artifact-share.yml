@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-        run: echo $((1 + 1)) > output.log
+        run: expr $((1 + 1)) > output.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
