@@ -1,0 +1,14 @@
+name: 【Test】Download Artifact
+on: workflow_dispatch
+
+# artifact: ジョブの実行結果を保存するための機能
+# https://docs.github.com/ja/actions/learn-github-actions/essential-features-of-github-actions
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: output-log-file
