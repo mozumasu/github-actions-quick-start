@@ -10,13 +10,13 @@ on:
         default: "テスト"
 
 env:
-  WORKFLOW_ENV: WORKFLOW_ENV
+  WORKFLOW_ENV: ワークフロー内の環境変数だよ
 
 jobs:
   check-env:
     runs-on: ubuntu-latest
     env:
-      ENV_JOBS: ENV_JOBS
+      ENV_JOBS: ジョブ内の環境変数だよ
     steps:
       - name: ワークフロー内の環境変数のテスト
         run: |
@@ -28,6 +28,6 @@ jobs:
 
       - name: アクション内の環境変数のテスト
         env:
-          ENV_ACTIONS: ENV_ACTIONS
+          ENV_ACTIONS: アクション内の環境変数だよ
         run: |
           echo env.ENV_ACTIONS: ${{ env.ENV_ACTIONS }}
