@@ -49,6 +49,10 @@ jobs:
       continue: true
       time: 3
     steps:
-      - continue-on-error: ${{ fromJson(env.continue) }}
-        timeout-minutes: ${{ fromJson(env.time) }}
-        run: echo ...
+      - continue-on-error: ${{ fromJson(env.continue) }} # ステップがエラーでも次のステップを実行する
+        timeout-minutes: ${{ fromJson(env.time) }} # タイムアウト時間を設定する
+        run: |
+          echo ${{env.continue}}
+          echo fromJson ${{fromJson(env.continue)}}
+          echo ${{env.time}}
+          echo fromJson ${{fromJson(env.time)}}
