@@ -1,0 +1,13 @@
+name: 【Test】github contextの中身を表示
+on: workflow_dispatch
+
+# github contextの中身を表示
+# https://docs.github.com/ja/actions/learn-github-actions/contexts#github-context
+
+jobs:
+  echo-github-var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github contextの中身を表示
+        # toJSONでJSON形式に変換して表示
+        run: echo '${{ toJSON(github) }}'
