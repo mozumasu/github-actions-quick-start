@@ -34,3 +34,10 @@ jobs:
       - name: containsのテスト(false)
         if: contains(github.ref, 'refs/heads/other')
         run: echo 'containsはfalse'
+
+  # toJSON
+  to-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: to-jsonのテスト
+        run: echo '${{ toJSON(github) }}'
