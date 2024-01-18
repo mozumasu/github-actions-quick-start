@@ -17,7 +17,20 @@ jobs:
   ternary-operator:
     runs-on: ubuntu-latest
     env:
+      # 条件 = 真の場合の値 || 偽の場合の値
       MY_ENV_VAR: ${{ github.ref == 'refs/heads/main' && 'value_for_main_branch' || 'value_for_other_branches' }}
     steps:
       - run: echo ${{ github.ref == 'refs/heads/main' && 'main' || 'other' }}
       - run: echo ${{ env.MY_ENV_VAR }}
+
+  # contein
+  contains:
+    runs-on: ubuntu-latest
+    steps:
+      - name: containsのテスト(if)
+        if: contains(github.ref, 'refs/heads/main')
+        run: echo 'containsはtrue'
+
+      - name: containsのテスト(false)
+        if: contains(github.ref, 'refs/heads/other')
+        run: echo 'containsはfalse'
