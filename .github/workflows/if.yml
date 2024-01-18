@@ -4,7 +4,7 @@ name: example-workflow
 on: [push]
 jobs:
   production-deploy:
-    # if: github.repository == 'mozumasu/github-actions-quick-start' && github.ref == 'main'
+    if: github.repository == 'mozumasu/github-actions-quick-start'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
