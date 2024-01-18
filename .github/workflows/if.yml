@@ -41,3 +41,14 @@ jobs:
     steps:
       - name: to-jsonのテスト
         run: echo '${{ toJSON(github) }}'
+
+  # fromJSON
+  from-json:
+    runs-on: ubuntu-latest
+    env:
+      continue: true
+      time: 3
+    steps:
+      - continue-on-error: ${{ fromJson(env.continue) }}
+        timeout-minutes: ${{ fromJson(env.time) }}
+        run: echo ...
