@@ -47,7 +47,7 @@ jobs:
   from-json:
     runs-on: ubuntu-latest
     env:
-      text: hogehoge
+      text: "hogehoge"
       continue: true
       time: 3
     steps:
