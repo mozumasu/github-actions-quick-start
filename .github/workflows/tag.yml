@@ -1,0 +1,10 @@
+name: 【Test】Add Tag
+on: workflow_dispatch
+
+jobs:
+  add-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: git tag
+      - run: git push origin
