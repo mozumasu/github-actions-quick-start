@@ -1,0 +1,14 @@
+# https://docs.github.com/ja/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idif
+
+name: example-workflow
+on: [push]
+jobs:
+  production-deploy:
+    if: github.repository == 'mouzmasu/github-actions-quickstart' && github.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - run: npm install -g bats
