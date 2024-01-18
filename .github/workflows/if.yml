@@ -60,3 +60,14 @@ jobs:
           echo fromJson ${{fromJson(env.continue)}}
           echo ${{env.time}}
           echo fromJson ${{fromJson(env.time)}}
+
+  # object filter
+  object-filter:
+    runs-on: ubuntu-latest
+    env:
+      fruit: '[{"name": "apple", "quantity": 1}, {"name": "orange", "quantity": 2}, {"name": "pear", "quantity": 1}]'
+      vegetable: '{"scallions": {"colors": ["green", "white", "red"], "ediblePortions": ["roots", "stalks"]}, "beets": {"colors": ["purple", "red", "gold", "white", "pink"], "ediblePortions": ["roots", "stems", "leaves"]}, "artichokes": {"colors": ["green", "purple", "red", "black"], "ediblePortions": ["hearts", "stems", "leaves"]}}'
+    steps:
+      - run: |
+          echo ${{ env.fruit }}
+          echo ${{env.vegetable}}
