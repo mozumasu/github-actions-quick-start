@@ -5,7 +5,7 @@ jobs:
   echo-github-var:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJSON(github) }}
-      - run: echo $GITHUB_ENV
+      - run: echo '${{ toJSON(github) }}'
+      - run: echo $GITHUB_ENV '${{GITHUB_ENV}}'
       - run: cat $GITHUB_ENV
       - run: ll $GITHUB_ENV
