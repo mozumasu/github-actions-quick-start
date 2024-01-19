@@ -2,6 +2,7 @@ name: Pull request labeler
 on: [pull_request_target, push]
 
 # https://github.com/actions/labeler
+# Pull Requestで変更されたファイル群のパスに基づいて、設定したラベルを自動付与するアクション
 jobs:
   # 入力としてGitHubトークンを渡す
   triage:
@@ -13,3 +14,4 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }} # 必須
+          configuration-path: .github/actions/labeler.yml # ラベルの設定ファイルのパス

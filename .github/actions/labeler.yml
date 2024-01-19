@@ -1,0 +1,13 @@
+web:
+  - web/**/*
+api:
+  - api/**/*
+batch:
+  - batch/**/*
+infrastructure:
+  - infrastructure/**/*
+cli:
+  - cli/**/*
+
+feat:
+  - head-branch: feature/**
