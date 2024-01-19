@@ -1,7 +1,8 @@
+name: 【Test】式とif
 # https://docs.github.com/ja/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idif
+# https://docs.github.com/ja/actions/learn-github-actions/expressions
 
-name: example-workflow
-on: [push]
+on: workflow_dispatch
 jobs:
   production-deploy:
     if: github.repository == 'mozumasu/github-actions-quick-start'

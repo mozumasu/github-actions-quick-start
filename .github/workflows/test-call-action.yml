@@ -1,7 +1,7 @@
-on: push
+name: 【Test】action.ymlの呼出し
+on: workflow_dispatch
 
-name: Hello world
-run-name: 【${{github.ref}}】 Hello world
+run-name: 【${{github.ref}}】 action.ymlの呼出し
 jobs:
   call_helllo_world:
     runs-on: ubuntu-latest
