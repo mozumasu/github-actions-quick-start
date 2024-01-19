@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4
+        # windowsの場合chmodでパーミッションが変更できないため、checkout後に実行する
       - name: chage permission
         run: chmod +x ./scripts/test.sh
       - name: Run a script
