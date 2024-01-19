@@ -1,9 +1,8 @@
 name: Pull request labeler
-on: [pull_request_target, push]
+on: pull_request_target
 
 # https://github.com/actions/labeler
 jobs:
-  # 入力としてGitHubトークンを渡す
   triage:
     runs-on: ubuntu-latest
     permissions:
@@ -13,3 +12,4 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }} # 必須
+          configuration-path: .github/config/label.yml
