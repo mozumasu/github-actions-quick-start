@@ -9,6 +9,8 @@ on: workflow_dispatch
 jobs:
   add-tag:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       # major.minor.patchのいずれかをインクリメントする
       - name: Bump version and push tag
