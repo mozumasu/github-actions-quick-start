@@ -1,0 +1,7 @@
+deployers:
+  defaults:
+    - manager-id
+
+  group:
+    manager-id:
+      - 93071448

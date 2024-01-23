@@ -9,8 +9,12 @@ on: workflow_dispatch
 jobs:
   add-tag:
     runs-on: ubuntu-latest
+    # Job実行に必要な権限を設定
+    # https://docs.github.com/ja/actions/using-jobs/assigning-permissions-to-jobs
+    # https://docs.github.com/ja/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-projects
     permissions:
       contents: write
+
     steps:
       # major.minor.patchのいずれかをインクリメントする
       - name: Bump version and push tag
